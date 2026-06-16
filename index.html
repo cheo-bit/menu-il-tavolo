@@ -1,118 +1,152 @@
-
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Il Tavolo Di Porto — Menú</title>
+</head>
+<body style="background:#4a5240;min-height:100vh;margin:0;padding:12px 0;">
 <style>
 *{box-sizing:border-box;margin:0;padding:0;}
-.wrap{font-family:var(--font-sans);max-width:390px;margin:0 auto;background:var(--color-background-secondary);border-radius:var(--border-radius-lg);padding:12px;border:0.5px solid var(--color-border-tertiary);}
-.screen{background:var(--color-background-primary);border-radius:var(--border-radius-md);overflow:hidden;border:0.5px solid var(--color-border-tertiary);}
-.header{text-align:center;padding:1.5rem 1rem 1rem;border-bottom:0.5px solid var(--color-border-tertiary);position:relative;}
-.logo{width:60px;height:60px;border-radius:50%;background:#FAEEDA;border:0.5px solid #EF9F27;display:inline-flex;align-items:center;justify-content:center;font-size:24px;margin-bottom:8px;}
-.resto-name{font-size:20px;font-weight:500;color:var(--color-text-primary);}
-.resto-sub{font-size:12px;color:var(--color-text-secondary);margin-top:3px;}
+body{font-family:sans-serif;background:#4a5240;}
+.wrap{max-width:390px;margin:0 auto;background:#3d4535;border-radius:16px;padding:12px;border:0.5px solid #5a6350;}
+.screen{background:#2e3328;border-radius:12px;overflow:hidden;border:0.5px solid #5a6350;}
+
+/* HEADER */
+.header{text-align:center;padding:1.5rem 1rem 1rem;border-bottom:0.5px solid #5a6350;}
+.logo{width:60px;height:60px;border-radius:50%;background:#3d4535;border:1.5px solid #c9a84c;display:inline-flex;align-items:center;justify-content:center;font-size:24px;margin-bottom:8px;}
+.resto-name{font-size:20px;font-weight:600;color:#c9a84c;letter-spacing:.03em;}
+.resto-sub{font-size:12px;color:#9aaa8a;margin-top:3px;}
 .social-row{display:flex;justify-content:center;gap:10px;margin-top:10px;}
-.soc-btn{width:32px;height:32px;border-radius:50%;border:0.5px solid var(--color-border-secondary);background:var(--color-background-primary);display:inline-flex;align-items:center;justify-content:center;color:var(--color-text-secondary);font-size:15px;cursor:pointer;}
+.soc-btn{width:36px;height:36px;border-radius:50%;border:1px solid #c9a84c;background:#3d4535;display:inline-flex;align-items:center;justify-content:center;color:#c9a84c;font-size:17px;cursor:pointer;text-decoration:none;transition:background .2s;}
+.soc-btn:hover{background:#c9a84c;color:#2e3328;}
 
-/* Selector de idioma */
-.lang-selector{position:absolute;top:12px;right:12px;display:flex;align-items:center;background:var(--color-background-secondary);border:0.5px solid var(--color-border-secondary);border-radius:20px;padding:3px;gap:2px;}
-.lang-btn{padding:3px 8px;border-radius:16px;font-size:11px;font-weight:500;cursor:pointer;border:none;background:transparent;color:var(--color-text-secondary);font-family:inherit;transition:background .15s,color .15s;line-height:1.4;}
-.lang-btn.active{background:var(--color-text-primary);color:var(--color-background-primary);}
-
-/* Barra de búsqueda */
+/* BÚSQUEDA */
 .search-wrap{padding:10px 10px 0;}
-.search-box{display:flex;align-items:center;gap:8px;background:var(--color-background-secondary);border:0.5px solid var(--color-border-secondary);border-radius:20px;padding:7px 12px;transition:border-color .2s;}
-.search-box:focus-within{border-color:var(--color-text-secondary);}
-.search-box i{font-size:15px;color:var(--color-text-tertiary);flex-shrink:0;}
-.search-box input{flex:1;border:none;background:transparent;outline:none;font-size:13px;color:var(--color-text-primary);font-family:inherit;}
-.search-box input::placeholder{color:var(--color-text-tertiary);}
-.search-clear{font-size:15px;color:var(--color-text-tertiary);cursor:pointer;flex-shrink:0;display:none;background:none;border:none;padding:0;line-height:1;}
+.search-box{display:flex;align-items:center;gap:8px;background:#3d4535;border:0.5px solid #5a6350;border-radius:20px;padding:7px 12px;transition:border-color .2s;}
+.search-box:focus-within{border-color:#c9a84c;}
+.search-box i{font-size:15px;color:#9aaa8a;flex-shrink:0;}
+.search-box input{flex:1;border:none;background:transparent;outline:none;font-size:13px;color:#e8dfc0;font-family:inherit;}
+.search-box input::placeholder{color:#6b7a5e;}
+.search-clear{font-size:15px;color:#9aaa8a;cursor:pointer;flex-shrink:0;display:none;background:none;border:none;padding:0;line-height:1;}
 .search-clear.visible{display:block;}
-.search-results-label{font-size:10px;font-weight:500;color:var(--color-text-tertiary);letter-spacing:.08em;text-transform:uppercase;padding:12px 10px 6px;}
-.search-empty{text-align:center;padding:28px 16px;color:var(--color-text-tertiary);font-size:13px;}
+.search-results-label{font-size:10px;font-weight:500;color:#9aaa8a;letter-spacing:.08em;text-transform:uppercase;padding:12px 10px 6px;}
+.search-empty{text-align:center;padding:28px 16px;color:#9aaa8a;font-size:13px;}
 .search-empty i{font-size:28px;display:block;margin-bottom:8px;}
 
+/* CATEGORÍAS */
 .cats{display:flex;gap:6px;padding:10px 10px 0;overflow-x:auto;scrollbar-width:none;}
 .cats::-webkit-scrollbar{display:none;}
-.cat{padding:5px 13px;border-radius:20px;font-size:12px;border:0.5px solid var(--color-border-secondary);color:var(--color-text-secondary);white-space:nowrap;cursor:pointer;background:var(--color-background-primary);}
-.cat.active{background:var(--color-text-primary);color:var(--color-background-primary);border-color:var(--color-text-primary);}
-.sec-title{font-size:10px;font-weight:500;color:var(--color-text-tertiary);letter-spacing:.08em;text-transform:uppercase;padding:12px 10px 6px;}
-.dish{display:flex;gap:10px;padding:10px;border-bottom:0.5px solid var(--color-border-tertiary);}
-.dish-img{width:68px;height:68px;border-radius:var(--border-radius-md);background:#F1EFE8;border:0.5px solid var(--color-border-tertiary);flex-shrink:0;display:flex;align-items:center;justify-content:center;color:var(--color-text-tertiary);font-size:10px;}
+.cat{padding:5px 13px;border-radius:20px;font-size:12px;border:0.5px solid #5a6350;color:#9aaa8a;white-space:nowrap;cursor:pointer;background:#3d4535;}
+.cat.active{background:#c9a84c;color:#2e3328;border-color:#c9a84c;font-weight:600;}
+
+/* PLATOS */
+.sec-title{font-size:10px;font-weight:600;color:#c9a84c;letter-spacing:.1em;text-transform:uppercase;padding:12px 10px 6px;}
+.dish{display:flex;gap:10px;padding:10px;border-bottom:0.5px solid #3d4535;}
+.dish-img{width:68px;height:68px;border-radius:8px;background:#3d4535;border:0.5px solid #5a6350;flex-shrink:0;overflow:hidden;}
+.dish-img img{width:100%;height:100%;object-fit:cover;display:block;}
 .dish-body{flex:1;min-width:0;}
-.dish-name{font-size:14px;font-weight:500;color:var(--color-text-primary);margin-bottom:3px;}
-.dish-desc{font-size:11px;color:var(--color-text-secondary);line-height:1.5;margin-bottom:6px;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;}
+.dish-name{font-size:14px;font-weight:600;color:#c9a84c;margin-bottom:3px;}
+.dish-desc{font-size:11px;color:#9aaa8a;line-height:1.5;margin-bottom:6px;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;}
 .dish-foot{display:flex;align-items:center;justify-content:space-between;}
-.price{font-size:14px;font-weight:500;color:var(--color-text-primary);}
-.badge-pop{font-size:9px;padding:2px 7px;border-radius:20px;background:#E1F5EE;color:#0F6E56;font-weight:500;}
-.badge-hot{font-size:9px;padding:2px 7px;border-radius:20px;background:#FCEBEB;color:#A32D2D;font-weight:500;}
+.price{font-size:14px;font-weight:600;color:#e8dfc0;}
+.badge-pop{font-size:9px;padding:2px 7px;border-radius:20px;background:#1a3a2a;color:#4caf82;font-weight:500;border:0.5px solid #4caf82;}
+.badge-hot{font-size:9px;padding:2px 7px;border-radius:20px;background:#3a1a1a;color:#e07070;font-weight:500;border:0.5px solid #e07070;}
+
+/* BOTONES ACCIÓN */
 .actions{display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:12px 10px;}
-.btn-wa{display:flex;align-items:center;justify-content:center;gap:6px;padding:11px 8px;border-radius:var(--border-radius-md);background:#1D9E75;color:#fff;font-size:13px;font-weight:500;border:none;cursor:pointer;}
-.btn-res{display:flex;align-items:center;justify-content:center;gap:6px;padding:11px 8px;border-radius:var(--border-radius-md);background:var(--color-background-primary);color:var(--color-text-primary);font-size:13px;font-weight:500;border:0.5px solid var(--color-border-secondary);cursor:pointer;}
+.btn-wa{display:flex;align-items:center;justify-content:center;gap:6px;padding:11px 8px;border-radius:8px;background:#1D9E75;color:#fff;font-size:13px;font-weight:500;border:none;cursor:pointer;text-decoration:none;}
+.btn-res{display:flex;align-items:center;justify-content:center;gap:6px;padding:11px 8px;border-radius:8px;background:#3d4535;color:#c9a84c;font-size:13px;font-weight:500;border:1px solid #c9a84c;cursor:pointer;text-decoration:none;}
 .extra-btns{display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:0 10px 12px;}
-.btn-sm{display:flex;align-items:center;justify-content:center;gap:5px;padding:8px;border-radius:var(--border-radius-md);background:var(--color-background-secondary);color:var(--color-text-secondary);font-size:12px;border:0.5px solid var(--color-border-tertiary);cursor:pointer;}
-.faq-section{border-top:0.5px solid var(--color-border-tertiary);padding:12px 10px;}
-.faq-title{font-size:10px;font-weight:500;color:var(--color-text-tertiary);letter-spacing:.08em;text-transform:uppercase;margin-bottom:8px;}
-.faq-item{padding:8px 0;border-bottom:0.5px solid var(--color-border-tertiary);cursor:pointer;}
-.faq-q{font-size:12px;font-weight:500;color:var(--color-text-primary);display:flex;justify-content:space-between;align-items:center;}
-.faq-a{font-size:11px;color:var(--color-text-secondary);margin-top:5px;line-height:1.5;display:none;}
+.btn-sm{display:flex;align-items:center;justify-content:center;gap:5px;padding:8px;border-radius:8px;background:#3d4535;color:#9aaa8a;font-size:12px;border:0.5px solid #5a6350;cursor:pointer;text-decoration:none;}
+.btn-sm:hover{border-color:#c9a84c;color:#c9a84c;}
+
+/* INFO */
+.info-row{display:flex;align-items:center;gap:8px;padding:7px 10px;font-size:12px;color:#9aaa8a;border-bottom:0.5px solid #3d4535;text-decoration:none;}
+.info-row i{font-size:14px;color:#c9a84c;}
+.info-row:hover{color:#c9a84c;}
+
+/* FAQ */
+.faq-section{border-top:0.5px solid #5a6350;padding:12px 10px;}
+.faq-title{font-size:10px;font-weight:600;color:#c9a84c;letter-spacing:.1em;text-transform:uppercase;margin-bottom:8px;}
+.faq-item{padding:8px 0;border-bottom:0.5px solid #3d4535;cursor:pointer;}
+.faq-q{font-size:12px;font-weight:500;color:#e8dfc0;display:flex;justify-content:space-between;align-items:center;gap:8px;}
+.faq-q i{color:#c9a84c;flex-shrink:0;}
+.faq-a{font-size:11px;color:#9aaa8a;margin-top:5px;line-height:1.5;display:none;}
 .faq-item.open .faq-a{display:block;}
-.info-row{display:flex;align-items:center;gap:8px;padding:7px 10px;font-size:12px;color:var(--color-text-secondary);border-bottom:0.5px solid var(--color-border-tertiary);}
-.info-row i{font-size:14px;color:var(--color-text-tertiary);}
 </style>
 
-<h2 class="sr-only">Menú digital Il Tavolo Di Porto — previsualización completa con platos, categorías, botones y FAQ</h2>
+<h2 style="display:none;">Menú digital Il Tavolo Di Porto</h2>
 
 <div class="wrap">
 <div class="screen">
 
 <div class="header">
-  <!-- Selector de idioma -->
-  <div class="lang-selector" role="group" aria-label="Selector de idioma">
-    <button class="lang-btn active" id="btn-es" onclick="setLang('es')" aria-pressed="true">🇪🇸 ES</button>
-    <button class="lang-btn" id="btn-en" onclick="setLang('en')" aria-pressed="false">🇺🇸 EN</button>
-  </div>
   <div class="logo">🍕</div>
   <p class="resto-name">Il Tavolo Di Porto</p>
-  <p class="resto-sub" id="resto-sub">Cocina italiana artesanal · Barranquilla</p>
+  <p class="resto-sub">Cocina italiana artesanal · Barranquilla</p>
   <div class="social-row">
-    <div class="soc-btn"><i class="ti ti-brand-instagram" aria-hidden="true"></i></div>
-    <div class="soc-btn"><i class="ti ti-brand-facebook" aria-hidden="true"></i></div>
-    <div class="soc-btn"><i class="ti ti-map-pin" aria-hidden="true"></i></div>
+    <a class="soc-btn" href="https://www.instagram.com/iltavolodipuerto/" target="_blank" aria-label="Instagram">
+      <i class="ti ti-brand-instagram"></i>
+    </a>
+    <a class="soc-btn" href="https://www.facebook.com/iltavolodipuerto/" target="_blank" aria-label="Facebook">
+      <i class="ti ti-brand-facebook"></i>
+    </a>
+    <a class="soc-btn" href="https://wa.me/573142929004" target="_blank" aria-label="WhatsApp">
+      <i class="ti ti-brand-whatsapp"></i>
+    </a>
+    <a class="soc-btn" href="https://www.google.com/maps/search/Cl.+1+%23575,+Puerto+Colombia,+Atlantico,+Colombia" target="_blank" aria-label="Ubicación">
+      <i class="ti ti-map-pin"></i>
+    </a>
   </div>
 </div>
 
-<!-- Barra de búsqueda -->
 <div class="search-wrap">
   <div class="search-box">
-    <i class="ti ti-search" aria-hidden="true"></i>
+    <i class="ti ti-search"></i>
     <input type="search" id="search-input" placeholder="Buscar platos..." autocomplete="off" aria-label="Buscar platos">
     <button class="search-clear" id="search-clear" aria-label="Limpiar búsqueda">
-      <i class="ti ti-x" aria-hidden="true"></i>
+      <i class="ti ti-x"></i>
     </button>
   </div>
 </div>
 
 <div class="cats" id="cats">
-  <div class="cat active" onclick="showCat('CAT1',this)" data-cat="CAT1">Antipasti</div>
-  <div class="cat" onclick="showCat('CAT2',this)" data-cat="CAT2">Pizzas</div>
-  <div class="cat" onclick="showCat('CAT3',this)" data-cat="CAT3">Lasagnas y Pastas</div>
-  <div class="cat" onclick="showCat('CAT4',this)" data-cat="CAT4">Panini</div>
-  <div class="cat" onclick="showCat('CAT5',this)" data-cat="CAT5">Hambur. y Calzones</div>
+  <div class="cat active" onclick="showCat('CAT1',this)">Antipasti</div>
+  <div class="cat" onclick="showCat('CAT2',this)">Pizzas</div>
+  <div class="cat" onclick="showCat('CAT3',this)">Lasagnas y Pastas</div>
+  <div class="cat" onclick="showCat('CAT4',this)">Panini</div>
+  <div class="cat" onclick="showCat('CAT5',this)">Hambur. y Calzones</div>
 </div>
 
 <div id="menu-list"></div>
 
-<div class="info-row"><i class="ti ti-clock" aria-hidden="true"></i> <span id="info-hours">[Horario del restaurante]</span></div>
-<div class="info-row"><i class="ti ti-map-pin" aria-hidden="true"></i> <span id="info-address">[Dirección, Barranquilla]</span></div>
+<a class="info-row" href="https://wa.me/573142929004" target="_blank">
+  <i class="ti ti-clock"></i> Lun–Dom · Consultar horario por WhatsApp
+</a>
+<a class="info-row" href="https://www.google.com/maps/search/Cl.+1+%23575,+Puerto+Colombia,+Atlantico,+Colombia" target="_blank">
+  <i class="ti ti-map-pin"></i> Cl. 1 #575, Puerto Colombia, Atlántico
+</a>
 
 <div class="actions">
-  <button class="btn-wa"><i class="ti ti-brand-whatsapp" style="font-size:16px;" aria-hidden="true"></i> <span id="btn-wa-text">Chat de Pedidos</span></button>
-  <button class="btn-res"><i class="ti ti-calendar-event" style="font-size:16px;" aria-hidden="true"></i> <span id="btn-res-text">Reservar Mesa</span></button>
+  <a class="btn-wa" href="https://wa.me/573142929004" target="_blank">
+    <i class="ti ti-brand-whatsapp" style="font-size:16px;"></i> Chat de Pedidos
+  </a>
+  <a class="btn-res" href="https://wa.me/573142929004?text=Hola,%20quiero%20reservar%20una%20mesa" target="_blank">
+    <i class="ti ti-calendar-event" style="font-size:16px;"></i> Reservar Mesa
+  </a>
 </div>
 <div class="extra-btns">
-  <button class="btn-sm"><i class="ti ti-map" style="font-size:14px;" aria-hidden="true"></i> <span id="btn-map-text">Cómo llegar</span></button>
-  <button class="btn-sm"><i class="ti ti-help-circle" style="font-size:14px;" aria-hidden="true"></i> <span id="btn-faq-text">Preguntas frecuentes</span></button>
+  <a class="btn-sm" href="https://www.google.com/maps/search/Cl.+1+%23575,+Puerto+Colombia,+Atlantico,+Colombia" target="_blank">
+    <i class="ti ti-map" style="font-size:14px;"></i> Cómo llegar
+  </a>
+  <a class="btn-sm" href="#faq" onclick="document.querySelector('.faq-section').scrollIntoView({behavior:'smooth'});return false;">
+    <i class="ti ti-help-circle" style="font-size:14px;"></i> Preguntas frecuentes
+  </a>
 </div>
 
-<div class="faq-section">
-  <div class="faq-title" id="faq-title">Preguntas frecuentes / FAQ</div>
+<div class="faq-section" id="faq">
+  <div class="faq-title">Preguntas frecuentes</div>
   <div id="faq-list"></div>
 </div>
 
@@ -120,248 +154,135 @@
 </div>
 
 <script>
-// ─────────────────────────────────────────────
-// TRADUCCIONES — edita aquí para actualizar textos
-// ─────────────────────────────────────────────
-const i18n = {
-  es: {
-    restoSub: "Cocina italiana artesanal · Barranquilla",
-    searchPlaceholder: "Buscar platos...",
-    searchNoResults: 'Sin resultados para "<strong>{q}</strong>"',
-    searchResultsLabel: "{n} resultado{s}",
-    infoHours: "[Horario del restaurante]",
-    infoAddress: "[Dirección, Barranquilla]",
-    btnWa: "Chat de Pedidos",
-    btnRes: "Reservar Mesa",
-    btnMap: "Cómo llegar",
-    btnFaq: "Preguntas frecuentes",
-    faqTitle: "Preguntas frecuentes / FAQ",
-    badgePop: "Popular",
-    badgeHot: "Picante",
-    catLabels: {CAT1:"Antipasti",CAT2:"Pizzas",CAT3:"Lasagnas y Pastas",CAT4:"Panini",CAT5:"Hambur. y Calzones"},
-    catNames:  {CAT1:"Antipasti",CAT2:"Pizzas",CAT3:"Lasagnas y Pastas",CAT4:"Panini",CAT5:"Hamburguesas y Calzones"}
-  },
-  en: {
-    restoSub: "Artisan Italian cuisine · Barranquilla",
-    searchPlaceholder: "Search dishes...",
-    searchNoResults: 'No results for "<strong>{q}</strong>"',
-    searchResultsLabel: "{n} result{s}",
-    infoHours: "[Restaurant hours]",
-    infoAddress: "[Address, Barranquilla]",
-    btnWa: "Order via WhatsApp",
-    btnRes: "Book a Table",
-    btnMap: "Get Directions",
-    btnFaq: "FAQ",
-    faqTitle: "Frequently Asked Questions",
-    badgePop: "Popular",
-    badgeHot: "Spicy",
-    catLabels: {CAT1:"Antipasti",CAT2:"Pizzas",CAT3:"Lasagnas & Pastas",CAT4:"Panini",CAT5:"Burgers & Calzones"},
-    catNames:  {CAT1:"Antipasti",CAT2:"Pizzas",CAT3:"Lasagnas & Pastas",CAT4:"Panini",CAT5:"Burgers & Calzones"}
-  }
-};
-
-// ─────────────────────────────────────────────
-// PRODUCTOS (nombre y descripción por idioma)
-// ─────────────────────────────────────────────
 const products = [
-  {id:"PROD001",cat:"CAT1",price:10,
-    es:{name:"Focaccia Clásica",desc:"Deliciosa focaccia tradicional con aceite de oliva y finas hierbas."},
-    en:{name:"Classic Focaccia",desc:"Traditional focaccia with extra virgin olive oil and fine herbs."}},
-  {id:"PROD002",cat:"CAT1",price:15,
-    es:{name:"Chorizo Artesanal",desc:"Chorizo al vino, toscano, milanesso, al horno o al pesto, acompañado con focaccia."},
-    en:{name:"Artisan Chorizo",desc:"Wine-braised, Tuscan, milanesso, oven-baked or pesto chorizo, served with focaccia."}},
-  {id:"PROD003",cat:"CAT1",price:22,
-    es:{name:"Crepes",desc:"Deliciosos crepes con opción de bondiola, pollo con champiñones o vegetales."},
-    en:{name:"Crepes",desc:"Delicious crepes with your choice of braised pork, chicken with mushrooms, or vegetables."}},
-  {id:"PROD004",cat:"CAT1",price:23,
-    es:{name:"Polpette",desc:"Polpette al pomodoro, a la romana o en vegetales, acompañado con focaccia."},
-    en:{name:"Polpette",desc:"Meatballs in tomato sauce, Roman-style, or vegetarian, served with focaccia."}},
-  {id:"PROD005",cat:"CAT1",price:45,pop:true,
-    es:{name:"Burrata Di Tavolo",desc:"Di búfala en balsámico y tomate mini, sobre cama de rúgula y prosciutto."},
-    en:{name:"Burrata Di Tavolo",desc:"Buffalo burrata with balsamic glaze and cherry tomatoes, on a bed of arugula and prosciutto."}},
-  {id:"PROD006",cat:"CAT1",price:40,
-    es:{name:"Bruschettas Il Forno (4 und)",desc:"Exquisitas bruschettas variadas de vegetales, atún, caprese y salmón."},
-    en:{name:"Bruschettas Il Forno (4 pcs)",desc:"Assorted bruschettas with vegetables, tuna, caprese, and salmon."}},
-  {id:"PROD007",cat:"CAT1",price:43,
-    es:{name:"Giardino Insalata",desc:"Lechuga, tomate mini, atún, al pesto, aceitunas negras y verdes, queso parmesano, queso ciliegine y reducción balsámica."},
-    en:{name:"Giardino Insalata",desc:"Lettuce, cherry tomatoes, tuna, pesto, black and green olives, Parmesan, ciliegine cheese and balsamic reduction."}},
-  {id:"PROD008",cat:"CAT1",price:42,
-    es:{name:"Carpaccio Res",desc:"Láminas de res o cerdo, rúgula, tomate mini, reducción balsámica, alcaparras y queso parmesano."},
-    en:{name:"Beef Carpaccio",desc:"Thin slices of beef or pork, arugula, cherry tomatoes, balsamic reduction, capers and Parmesan."}},
-  {id:"PROD009",cat:"CAT1",price:48,
-    es:{name:"Carpaccio de Salmón",desc:"Láminas de salmón ahumadas, rúgula, tomate mini, reducción balsámica, alcaparras y queso parmesano."},
-    en:{name:"Salmon Carpaccio",desc:"Smoked salmon slices, arugula, cherry tomatoes, balsamic reduction, capers and Parmesan."}},
-  {id:"PROD010",cat:"CAT1",price:65,pop:true,
-    es:{name:"Tabla de Prosciutto",desc:"Exquisita tabla acompañada de encurtidos ibéricos, vegetales al horno y variedad de quesos."},
-    en:{name:"Prosciutto Board",desc:"Exquisite charcuterie board with Iberian pickles, roasted vegetables and a variety of cheeses."}},
-  {id:"PROD011",cat:"CAT1",price:16,
-    es:{name:"Zuppa Della Nonna",desc:"Tradicional sopa de tomate, minestrone o de albóndigas, acompañado con focaccia."},
-    en:{name:"Zuppa Della Nonna",desc:"Traditional tomato soup, minestrone or meatball soup, served with focaccia."}},
-  {id:"PROD012",cat:"CAT2",price:35,
-    es:{name:"Mamma Mía (Margarita)",desc:"Base pomodoro, queso mozzarella, albahaca fresca y aceite de oliva extra virgen."},
-    en:{name:"Mamma Mía (Margherita)",desc:"Tomato base, mozzarella, fresh basil and extra virgin olive oil."}},
-  {id:"PROD013",cat:"CAT2",price:67,pop:true,
-    es:{name:"Fiorentina",desc:"Base pomodoro, queso mozzarella, prosciutto, rúgula, tomate mini, queso ciliegine y reducción de balsámico."},
-    en:{name:"Fiorentina",desc:"Tomato base, mozzarella, prosciutto, arugula, cherry tomatoes, ciliegine cheese and balsamic reduction."}},
-  {id:"PROD014",cat:"CAT2",price:68,pop:true,
-    es:{name:"Di Tavola",desc:"Base pomodoro, queso mozzarella, tocineta ahumada, cebolla caramelizada, chorizo de cerdo artesanal, champiñones, rúgula y reducción de balsámico."},
-    en:{name:"Di Tavola",desc:"Tomato base, mozzarella, smoked bacon, caramelized onion, artisan pork chorizo, mushrooms, arugula and balsamic reduction."}},
-  {id:"PROD015",cat:"CAT2",price:67,
-    es:{name:"4 Formaggio (Cuatro Quesos)",desc:"Exquisita mezcla de queso azul, mozzarella, ricotta, parmesano y manzana verde caramelizada."},
-    en:{name:"4 Formaggio (Four Cheese)",desc:"Exquisite blend of blue cheese, mozzarella, ricotta, Parmesan and caramelized green apple."}},
-  {id:"PROD016",cat:"CAT2",price:73,
-    es:{name:"Salmone (Salmón ahumado)",desc:"Base pomodoro, queso mozzarella, carpaccio, rúgula, tomate mini, queso ciliegine y parmesano."},
-    en:{name:"Salmone (Smoked Salmon)",desc:"Tomato base, mozzarella, salmon carpaccio, arugula, cherry tomatoes, ciliegine and Parmesan."}},
-  {id:"PROD017",cat:"CAT2",price:38,
-    es:{name:"Cacio e Pepe",desc:"Deliciosa base de crema de queso pecorino, queso mozzarella y pimienta negra."},
-    en:{name:"Cacio e Pepe",desc:"Delicious pecorino cheese cream base, mozzarella and black pepper."}},
-  {id:"PROD018",cat:"CAT2",price:54,
-    es:{name:"Hawaiana",desc:"Combinación clásica con base pomodoro, queso mozzarella, jamón ahumado y piña artesanal."},
-    en:{name:"Hawaiian",desc:"Classic combination with tomato base, mozzarella, smoked ham and artisan pineapple."}},
-  {id:"PROD019",cat:"CAT2",price:38,
-    es:{name:"Bolognese",desc:"Base pomodoro, queso mozzarella, carne angus molida y estofada con queso parmesano."},
-    en:{name:"Bolognese",desc:"Tomato base, mozzarella, ground and braised Angus beef with Parmesan."}},
-  {id:"PROD020",cat:"CAT2",price:55,
-    es:{name:"Mía Luna",desc:"Base pomodoro, queso mozzarella, pollo desmechado, maíz tierno y jamón ahumado."},
-    en:{name:"Mía Luna",desc:"Tomato base, mozzarella, shredded chicken, sweet corn and smoked ham."}},
-  {id:"PROD021",cat:"CAT2",price:39,hot:true,
-    es:{name:"Salami (Picante)",desc:"Base pomodoro, queso mozzarella y salami de excelente calidad con un toque picante."},
-    en:{name:"Salami (Spicy)",desc:"Tomato base, mozzarella and premium quality salami with a spicy kick."}},
-  {id:"PROD022",cat:"CAT2",price:55,
-    es:{name:"Peperoni",desc:"Clásica pizza con base pomodoro, queso mozzarella y abundante peperoni."},
-    en:{name:"Pepperoni",desc:"Classic pizza with tomato base, mozzarella and generous pepperoni."}},
-  {id:"PROD023",cat:"CAT2",price:52,hot:true,
-    es:{name:"Diabola (Picante)",desc:"Base pomodoro, queso mozzarella, auténtico chorizo español picante y cebolla roja."},
-    en:{name:"Diabola (Spicy)",desc:"Tomato base, mozzarella, authentic spicy Spanish chorizo and red onion."}},
-  {id:"PROD024",cat:"CAT2",price:45,
-    es:{name:"Jamón Artesanal",desc:"Base pomodoro, queso mozzarella y generoso jamón ahumado premium."},
-    en:{name:"Artisan Ham",desc:"Tomato base, mozzarella and generous premium smoked ham."}},
-  {id:"PROD025",cat:"CAT2",price:62,
-    es:{name:"Fratelli",desc:"Base pomodoro, queso mozzarella, jamón artesanal, tocineta ahumada y ciruelas secas."},
-    en:{name:"Fratelli",desc:"Tomato base, mozzarella, artisan ham, smoked bacon and dried plums."}},
-  {id:"PROD026",cat:"CAT2",price:95,pop:true,
-    es:{name:"Muelle 1888",desc:"Crema de salsa blanca, queso mozzarella y una selecta variedad de frutos del mar."},
-    en:{name:"Muelle 1888",desc:"White sauce cream, mozzarella and a select variety of fresh seafood."}},
-  {id:"PROD027",cat:"CAT2",price:65,
-    es:{name:"Di Carnes",desc:"Para los amantes de la carne: base pomodoro, mozzarella, salami, peperoni, jamón y tocineta ahumados."},
-    en:{name:"Di Carnes",desc:"For meat lovers: tomato base, mozzarella, salami, pepperoni, ham and smoked bacon."}},
-  {id:"PROD028",cat:"CAT2",price:61,
-    es:{name:"Valenciana",desc:"Salsa blanca, queso mozzarella, rúgula, champiñones, aceitunas verdes, atún y anchoas."},
-    en:{name:"Valenciana",desc:"White sauce, mozzarella, arugula, mushrooms, green olives, tuna and anchovies."}},
-  {id:"PROD029",cat:"CAT2",price:45,
-    es:{name:"Solo Vegetales",desc:"Base pomodoro, mozzarella, champiñones, cebolla, tomate, pimentón de tres colores, calabacín y vegetales encurtidos."},
-    en:{name:"Vegetables Only",desc:"Tomato base, mozzarella, mushrooms, onion, tomato, three-color bell peppers, zucchini and pickled vegetables."}},
-  {id:"PROD030",cat:"CAT2",price:55,pop:true,
-    es:{name:"Nutella",desc:"Deliciosa pizza dulce con base de Nutella, fresas frescas y azúcar pulverizada."},
-    en:{name:"Nutella",desc:"Delicious sweet pizza with Nutella base, fresh strawberries and powdered sugar."}},
-  {id:"PROD031",cat:"CAT3",price:46,pop:true,
-    es:{name:"Lasagna de Pollo con Champiñones",desc:"Deliciosas capas de pasta con pollo desmechado, champiñones frescos y queso gratinado."},
-    en:{name:"Chicken & Mushroom Lasagna",desc:"Delicious pasta layers with shredded chicken, fresh mushrooms and gratinated cheese."}},
-  {id:"PROD032",cat:"CAT3",price:48,pop:true,
-    es:{name:"Lasagna Bolognese",desc:"Capas de pasta con salsa boloñesa tradicional de carne angus, bechamel y queso derretido."},
-    en:{name:"Bolognese Lasagna",desc:"Pasta layers with traditional Angus beef Bolognese sauce, béchamel and melted cheese."}},
-  {id:"PROD033",cat:"CAT3",price:22,
-    es:{name:"Pasta al Burro",desc:"Sencilla y exquisita pasta preparada con mantequilla y abundante queso parmesano."},
-    en:{name:"Pasta al Burro",desc:"Simple and exquisite pasta made with butter and generous Parmesan cheese."}},
-  {id:"PROD034",cat:"CAT3",price:28,
-    es:{name:"Pasta Alfredo",desc:"Pasta en salsa blanca cremosa acompañada de jamón ahumado y queso parmesano."},
-    en:{name:"Pasta Alfredo",desc:"Pasta in creamy white sauce with smoked ham and Parmesan cheese."}},
-  {id:"PROD035",cat:"CAT3",price:38,
-    es:{name:"Pasta Boscaiola",desc:"Pasta con salsa blanca, champiñones, chorizo de cerdo artesanal, tocineta y jamón."},
-    en:{name:"Pasta Boscaiola",desc:"Pasta with white sauce, mushrooms, artisan pork chorizo, bacon and ham."}},
-  {id:"PROD036",cat:"CAT3",price:42,
-    es:{name:"Pasta Siciliana",desc:"Pasta con salsa pomodoro, tomate, aceitunas negras, anchoas, alcaparras y albahaca."},
-    en:{name:"Pasta Siciliana",desc:"Pasta with tomato sauce, tomatoes, black olives, anchovies, capers and basil."}},
-  {id:"PROD037",cat:"CAT3",price:22,
-    es:{name:"Pasta al Pesto",desc:"Pasta fresca servida con salsa pesto tradicional de la casa y queso parmesano."},
-    en:{name:"Pasta al Pesto",desc:"Fresh pasta with our house traditional pesto sauce and Parmesan cheese."}},
-  {id:"PROD038",cat:"CAT3",price:32,
-    es:{name:"Pasta Bolognesa",desc:"Carne angus molida y estofada en salsa napolitana con tomates frescos y parmesano."},
-    en:{name:"Bolognese Pasta",desc:"Ground and braised Angus beef in Neapolitan sauce with fresh tomatoes and Parmesan."}},
-  {id:"PROD039",cat:"CAT3",price:65,pop:true,
-    es:{name:"Pasta Frutti Di Mare",desc:"Combinación selecta de mariscos en salsa pomodoro o salsa bechamel a elección."},
-    en:{name:"Pasta Frutti Di Mare",desc:"Select combination of seafood in tomato sauce or béchamel sauce of your choice."}},
-  {id:"PROD040",cat:"CAT4",price:35,
-    es:{name:"Panino Da Giardino",desc:"Sándwich en pan artesanal con lechuga, vegetales encurtidos, queso mozzarella, tomate mini, pesto y atún."},
-    en:{name:"Panino Da Giardino",desc:"Artisan bread sandwich with lettuce, pickled vegetables, mozzarella, cherry tomatoes, pesto and tuna."}},
-  {id:"PROD041",cat:"CAT4",price:38,
-    es:{name:"Panino Pollo",desc:"Pollo desmechado y tocineta en salsa blanca con queso mozzarella fundido."},
-    en:{name:"Chicken Panino",desc:"Shredded chicken and bacon in white sauce with melted mozzarella cheese."}},
-  {id:"PROD042",cat:"CAT4",price:40,pop:true,
-    es:{name:"Panino Di Tavolo",desc:"Tocineta, jamón ahumado, chorizo artesanal, tomate mini, cebolla caramelizada y queso mozzarella."},
-    en:{name:"Panino Di Tavolo",desc:"Bacon, smoked ham, artisan chorizo, cherry tomatoes, caramelized onion and mozzarella."}},
-  {id:"PROD043",cat:"CAT4",price:43,
-    es:{name:"Panino Bondiola",desc:"Jugosa carne de cerdo, salsa BBQ de la casa, lechuga, tomate mini y queso mozzarella."},
-    en:{name:"Bondiola Panino",desc:"Juicy pulled pork, house BBQ sauce, lettuce, cherry tomatoes and mozzarella cheese."}},
-  {id:"PROD044",cat:"CAT5",price:35,pop:true,
-    es:{name:"Burguezza",desc:"Carne angus y bondiola, pan artesanal, lechuga, tomate mini, queso mozzarella y reducción balsámica. Acompañada de papas en cascos."},
-    en:{name:"Burguezza",desc:"Angus beef and bondiola, artisan bun, lettuce, cherry tomatoes, mozzarella and balsamic reduction. Served with wedge fries."}},
-  {id:"PROD045",cat:"CAT5",price:43,
-    es:{name:"Calzone Hawaiano",desc:"Calzone cerrado con base pomodoro, queso mozzarella, jamón ahumado y piña artesanal."},
-    en:{name:"Hawaiian Calzone",desc:"Closed calzone with tomato base, mozzarella, smoked ham and artisan pineapple."}},
-  {id:"PROD046",cat:"CAT5",price:45,
-    es:{name:"Calzone de Bondiola",desc:"Calzone relleno de deliciosa carne de cerdo, salsa BBQ, tomate mini y queso mozzarella."},
-    en:{name:"Bondiola Calzone",desc:"Calzone filled with delicious pulled pork, BBQ sauce, cherry tomatoes and mozzarella."}},
-  {id:"PROD047",cat:"CAT5",price:45,
-    es:{name:"Calzone Capreze",desc:"Calzone clásico con base pomodoro, salsa pesto, queso ciliegine, mozzarella y tomate mini."},
-    en:{name:"Caprese Calzone",desc:"Classic calzone with tomato base, pesto sauce, ciliegine cheese, mozzarella and cherry tomatoes."}}
+  {id:"PROD001",cat:"CAT1",name:"Focaccia Clásica",desc:"Deliciosa focaccia tradicional con aceite de oliva y finas hierbas.",price:10,
+   img:"https://images.unsplash.com/photo-1586444248902-2f64eddc13df?w=136&h=136&fit=crop&fm=webp&q=70"},
+  {id:"PROD002",cat:"CAT1",name:"Chorizo Artesanal",desc:"Chorizo al vino, toscano, milanesso, al horno o al pesto, acompañado con focaccia.",price:15,
+   img:"https://images.unsplash.com/photo-1626645738196-c2a7c87a8f58?w=136&h=136&fit=crop&fm=webp&q=70"},
+  {id:"PROD003",cat:"CAT1",name:"Crepes",desc:"Deliciosos crepes con opción de bondiola, pollo con champiñones o vegetales.",price:22,
+   img:"https://images.unsplash.com/photo-1519676867240-f03562e64548?w=136&h=136&fit=crop&fm=webp&q=70"},
+  {id:"PROD004",cat:"CAT1",name:"Polpette",desc:"Polpette al pomodoro, a la romana o en vegetales, acompañado con focaccia.",price:23,
+   img:"https://images.unsplash.com/photo-1529042410759-befb1204b468?w=136&h=136&fit=crop&fm=webp&q=70"},
+  {id:"PROD005",cat:"CAT1",name:"Burrata Di Tavolo",desc:"Di búfala en balsámico y tomate mini, sobre cama de rúgula y prosciutto.",price:45,pop:true,
+   img:"https://images.unsplash.com/photo-1609167830220-7164aa360951?w=136&h=136&fit=crop&fm=webp&q=70"},
+  {id:"PROD006",cat:"CAT1",name:"Bruschettas Il Forno (4 und)",desc:"Exquisitas bruschettas variadas de vegetales, atún, caprese y salmón.",price:40,
+   img:"https://images.unsplash.com/photo-1572695157366-5e585ab2b69f?w=136&h=136&fit=crop&fm=webp&q=70"},
+  {id:"PROD007",cat:"CAT1",name:"Giardino Insalata",desc:"Lechuga, tomate mini, atún, al pesto, aceitunas negras y verdes, queso parmesano, queso ciliegine y reducción balsámica.",price:43,
+   img:"https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=136&h=136&fit=crop&fm=webp&q=70"},
+  {id:"PROD008",cat:"CAT1",name:"Carpaccio Res",desc:"Láminas de res o cerdo, rúgula, tomate mini, reducción balsámica, alcaparras y queso parmesano.",price:42,
+   img:"https://images.unsplash.com/photo-1544025162-d76694265947?w=136&h=136&fit=crop&fm=webp&q=70"},
+  {id:"PROD009",cat:"CAT1",name:"Carpaccio de Salmón",desc:"Láminas de salmón ahumadas, rúgula, tomate mini, reducción balsámica, alcaparras y queso parmesano.",price:48,
+   img:"https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?w=136&h=136&fit=crop&fm=webp&q=70"},
+  {id:"PROD010",cat:"CAT1",name:"Tabla de Prosciutto",desc:"Exquisita tabla acompañada de encurtidos ibéricos, vegetales al horno y variedad de quesos.",price:65,pop:true,
+   img:"https://images.unsplash.com/photo-1601379327928-bedfaf9da2d0?w=136&h=136&fit=crop&fm=webp&q=70"},
+  {id:"PROD011",cat:"CAT1",name:"Zuppa Della Nonna",desc:"Tradicional sopa de tomate, minestrone o de albóndigas, acompañado con focaccia.",price:16,
+   img:"https://images.unsplash.com/photo-1547592180-85f173990554?w=136&h=136&fit=crop&fm=webp&q=70"},
+  {id:"PROD012",cat:"CAT2",name:"Mamma Mía (Margarita)",desc:"Base pomodoro, queso mozzarella, albahaca fresca y aceite de oliva extra virgen.",price:35,
+   img:"https://images.unsplash.com/photo-1574071318508-1cdbab80d002?w=136&h=136&fit=crop&fm=webp&q=70"},
+  {id:"PROD013",cat:"CAT2",name:"Fiorentina",desc:"Base pomodoro, queso mozzarella, prosciutto, rúgula, tomate mini, queso ciliegine y reducción de balsámico.",price:67,pop:true,
+   img:"https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=136&h=136&fit=crop&fm=webp&q=70"},
+  {id:"PROD014",cat:"CAT2",name:"Di Tavola",desc:"Base pomodoro, queso mozzarella, tocineta ahumada, cebolla caramelizada, chorizo de cerdo artesanal, champiñones, rúgula y reducción de balsámico.",price:68,pop:true,
+   img:"https://images.unsplash.com/photo-1513104890138-7c749659a591?w=136&h=136&fit=crop&fm=webp&q=70"},
+  {id:"PROD015",cat:"CAT2",name:"4 Formaggio (Cuatro Quesos)",desc:"Exquisita mezcla de queso azul, mozzarella, ricotta, parmesano y manzana verde caramelizada.",price:67,
+   img:"https://images.unsplash.com/photo-1590947132387-155cc02f3212?w=136&h=136&fit=crop&fm=webp&q=70"},
+  {id:"PROD016",cat:"CAT2",name:"Salmone (Salmón ahumado)",desc:"Base pomodoro, queso mozzarella, carpaccio, rúgula, tomate mini, queso ciliegine y parmesano.",price:73,
+   img:"https://images.unsplash.com/photo-1467003909585-2f8a72700288?w=136&h=136&fit=crop&fm=webp&q=70"},
+  {id:"PROD017",cat:"CAT2",name:"Cacio e Pepe",desc:"Deliciosa base de crema de queso pecorino, queso mozzarella y pimienta negra.",price:38,
+   img:"https://images.unsplash.com/photo-1552539618-7eec9b4d1796?w=136&h=136&fit=crop&fm=webp&q=70"},
+  {id:"PROD018",cat:"CAT2",name:"Hawaiana",desc:"Combinación clásica con base pomodoro, queso mozzarella, jamón ahumado y piña artesanal.",price:54,
+   img:"https://images.unsplash.com/photo-1565299507177-b0ac66763828?w=136&h=136&fit=crop&fm=webp&q=70"},
+  {id:"PROD019",cat:"CAT2",name:"Bolognese",desc:"Base pomodoro, queso mozzarella, carne angus molida y estofada con queso parmesano.",price:38,
+   img:"https://images.unsplash.com/photo-1571997478779-2adcbbe9ab2f?w=136&h=136&fit=crop&fm=webp&q=70"},
+  {id:"PROD020",cat:"CAT2",name:"Mía Luna",desc:"Base pomodoro, queso mozzarella, pollo desmechado, maíz tierno y jamón ahumado.",price:55,
+   img:"https://images.unsplash.com/photo-1576458088443-04a19bb13da6?w=136&h=136&fit=crop&fm=webp&q=70"},
+  {id:"PROD021",cat:"CAT2",name:"Salami (Picante)",desc:"Base pomodoro, queso mozzarella y salami de excelente calidad con un toque picante.",price:39,hot:true,
+   img:"https://images.unsplash.com/photo-1506354666786-959d6d497f1a?w=136&h=136&fit=crop&fm=webp&q=70"},
+  {id:"PROD022",cat:"CAT2",name:"Peperoni",desc:"Clásica pizza con base pomodoro, queso mozzarella y abundante peperoni.",price:55,
+   img:"https://images.unsplash.com/photo-1628840042765-356cda07504e?w=136&h=136&fit=crop&fm=webp&q=70"},
+  {id:"PROD023",cat:"CAT2",name:"Diabola (Picante)",desc:"Base pomodoro, queso mozzarella, auténtico chorizo español picante y cebolla roja.",price:52,hot:true,
+   img:"https://images.unsplash.com/photo-1534308983496-4fabb1a015ee?w=136&h=136&fit=crop&fm=webp&q=70"},
+  {id:"PROD024",cat:"CAT2",name:"Jamón Artesanal",desc:"Base pomodoro, queso mozzarella y generoso jamón ahumado premium.",price:45,
+   img:"https://images.unsplash.com/photo-1555072956-7758afb20e8f?w=136&h=136&fit=crop&fm=webp&q=70"},
+  {id:"PROD025",cat:"CAT2",name:"Fratelli",desc:"Base pomodoro, queso mozzarella, jamón artesanal, tocineta ahumada y ciruelas secas.",price:62,
+   img:"https://images.unsplash.com/photo-1520201163981-8cc95007dd2a?w=136&h=136&fit=crop&fm=webp&q=70"},
+  {id:"PROD026",cat:"CAT2",name:"Muelle 1888",desc:"Crema de salsa blanca, queso mozzarella y una selecta variedad de frutos del mar.",price:95,pop:true,
+   img:"https://images.unsplash.com/photo-1559742811-822873691df8?w=136&h=136&fit=crop&fm=webp&q=70"},
+  {id:"PROD027",cat:"CAT2",name:"Di Carnes",desc:"Para los amantes de la carne: base pomodoro, mozzarella, salami, peperoni, jamón y tocineta ahumados.",price:65,
+   img:"https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=136&h=136&fit=crop&fm=webp&q=70"},
+  {id:"PROD028",cat:"CAT2",name:"Valenciana",desc:"Salsa blanca, queso mozzarella, rúgula, champiñones, aceitunas verdes, atún y anchoas.",price:61,
+   img:"https://images.unsplash.com/photo-1548369937-47519962c11a?w=136&h=136&fit=crop&fm=webp&q=70"},
+  {id:"PROD029",cat:"CAT2",name:"Solo Vegetales",desc:"Base pomodoro, mozzarella, champiñones, cebolla, tomate, pimentón de tres colores, calabacín y vegetales encurtidos.",price:45,
+   img:"https://images.unsplash.com/photo-1511689660979-10d2b1eccf89?w=136&h=136&fit=crop&fm=webp&q=70"},
+  {id:"PROD030",cat:"CAT2",name:"Nutella",desc:"Deliciosa pizza dulce con base de Nutella, fresas frescas y azúcar pulverizada.",price:55,pop:true,
+   img:"https://images.unsplash.com/photo-1549007994-cb92caebd54b?w=136&h=136&fit=crop&fm=webp&q=70"},
+  {id:"PROD031",cat:"CAT3",name:"Lasagna de Pollo con Champiñones",desc:"Deliciosas capas de pasta con pollo desmechado, champiñones frescos y queso gratinado.",price:46,pop:true,
+   img:"https://images.unsplash.com/photo-1574894709920-11b28e7367e3?w=136&h=136&fit=crop&fm=webp&q=70"},
+  {id:"PROD032",cat:"CAT3",name:"Lasagna Bolognese",desc:"Capas de pasta con salsa boloñesa tradicional de carne angus, bechamel y queso derretido.",price:48,pop:true,
+   img:"https://images.unsplash.com/photo-1551183053-bf91798d792b?w=136&h=136&fit=crop&fm=webp&q=70"},
+  {id:"PROD033",cat:"CAT3",name:"Pasta al Burro",desc:"Sencilla y exquisita pasta preparada con mantequilla y abundante queso parmesano.",price:22,
+   img:"https://images.unsplash.com/photo-1555949258-eb67b1ef0ceb?w=136&h=136&fit=crop&fm=webp&q=70"},
+  {id:"PROD034",cat:"CAT3",name:"Pasta Alfredo",desc:"Pasta en salsa blanca cremosa acompañada de jamón ahumado y queso parmesano.",price:28,
+   img:"https://images.unsplash.com/photo-1621996346565-e3dbc646d9a9?w=136&h=136&fit=crop&fm=webp&q=70"},
+  {id:"PROD035",cat:"CAT3",name:"Pasta Boscaiola",desc:"Pasta con salsa blanca, champiñones, chorizo de cerdo artesanal, tocineta y jamón.",price:38,
+   img:"https://images.unsplash.com/photo-1563379926898-05f4575a45d8?w=136&h=136&fit=crop&fm=webp&q=70"},
+  {id:"PROD036",cat:"CAT3",name:"Pasta Siciliana",desc:"Pasta con salsa pomodoro, tomate, aceitunas negras, anchoas, alcaparras y albahaca.",price:42,
+   img:"https://images.unsplash.com/photo-1597560673774-1b3c93fc9bde?w=136&h=136&fit=crop&fm=webp&q=70"},
+  {id:"PROD037",cat:"CAT3",name:"Pasta al Pesto",desc:"Pasta fresca servida con salsa pesto tradicional de la casa y queso parmesano.",price:22,
+   img:"https://images.unsplash.com/photo-1473093295043-cdd812d0e601?w=136&h=136&fit=crop&fm=webp&q=70"},
+  {id:"PROD038",cat:"CAT3",name:"Pasta Bolognesa",desc:"Carne angus molida y estofada en salsa napolitana con tomates frescos y parmesano.",price:32,
+   img:"https://images.unsplash.com/photo-1598866594230-a7c12756260f?w=136&h=136&fit=crop&fm=webp&q=70"},
+  {id:"PROD039",cat:"CAT3",name:"Pasta Frutti Di Mare",desc:"Combinación selecta de mariscos en salsa pomodoro o salsa bechamel a elección.",price:65,pop:true,
+   img:"https://images.unsplash.com/photo-1516100882582-96c3a05fe590?w=136&h=136&fit=crop&fm=webp&q=70"},
+  {id:"PROD040",cat:"CAT4",name:"Panino Da Giardino",desc:"Sándwich en pan artesanal con lechuga, vegetales encurtidos, queso mozzarella, tomate mini, pesto y atún.",price:35,
+   img:"https://images.unsplash.com/photo-1509722747041-616f39b57569?w=136&h=136&fit=crop&fm=webp&q=70"},
+  {id:"PROD041",cat:"CAT4",name:"Panino Pollo",desc:"Pollo desmechado y tocineta en salsa blanca con queso mozzarella fundido.",price:38,
+   img:"https://images.unsplash.com/photo-1550507992-eb63ffee0847?w=136&h=136&fit=crop&fm=webp&q=70"},
+  {id:"PROD042",cat:"CAT4",name:"Panino Di Tavolo",desc:"Tocineta, jamón ahumado, chorizo artesanal, tomate mini, cebolla caramelizada y queso mozzarella.",price:40,pop:true,
+   img:"https://images.unsplash.com/photo-1528735602780-2552fd46c7af?w=136&h=136&fit=crop&fm=webp&q=70"},
+  {id:"PROD043",cat:"CAT4",name:"Panino Bondiola",desc:"Jugosa carne de cerdo, salsa BBQ de la casa, lechuga, tomate mini y queso mozzarella.",price:43,
+   img:"https://images.unsplash.com/photo-1553979459-d2229ba7433b?w=136&h=136&fit=crop&fm=webp&q=70"},
+  {id:"PROD044",cat:"CAT5",name:"Burguezza",desc:"Carne angus y bondiola, pan artesanal, lechuga, tomate mini, queso mozzarella y reducción balsámica. Acompañada de papas en cascos.",price:35,pop:true,
+   img:"https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=136&h=136&fit=crop&fm=webp&q=70"},
+  {id:"PROD045",cat:"CAT5",name:"Calzone Hawaiano",desc:"Calzone cerrado con base pomodoro, queso mozzarella, jamón ahumado y piña artesanal.",price:43,
+   img:"https://images.unsplash.com/photo-1604917877934-07d58d8f0a5b?w=136&h=136&fit=crop&fm=webp&q=70"},
+  {id:"PROD046",cat:"CAT5",name:"Calzone de Bondiola",desc:"Calzone relleno de deliciosa carne de cerdo, salsa BBQ, tomate mini y queso mozzarella.",price:45,
+   img:"https://images.unsplash.com/photo-1593560708920-61dd98c46a4e?w=136&h=136&fit=crop&fm=webp&q=70"},
+  {id:"PROD047",cat:"CAT5",name:"Calzone Capreze",desc:"Calzone clásico con base pomodoro, salsa pesto, queso ciliegine, mozzarella y tomate mini.",price:45,
+   img:"https://images.unsplash.com/photo-1571407970349-bc81e7e96d47?w=136&h=136&fit=crop&fm=webp&q=70"}
 ];
 
-// ─────────────────────────────────────────────
-// PREGUNTAS FRECUENTES por idioma
-// ─────────────────────────────────────────────
-const faqs = {
-  es:[
-    {q:"¿De qué tamaño son las pizzas?",a:"Todas nuestras pizzas tienen un diámetro de 30 cm y se dividen en 6 porciones perfectas para compartir."},
-    {q:"¿Tienen opciones vegetarianas?",a:"Sí, contamos con la pizza Solo Vegetales, pastas tradicionales y ensaladas adaptables a tu preferencia."},
-    {q:"¿Cómo realizo una reserva?",a:"Puedes reservar directamente desde el botón Reservar Mesa de la app o enviándonos un mensaje directo a WhatsApp."},
-    {q:"¿Cuáles son los métodos de pago?",a:"Aceptamos pagos en efectivo, tarjetas de crédito/débito y transferencias electrónicas bancarias."},
-    {q:"¿El restaurante es Pet Friendly?",a:"Sí, las mascotas son bienvenidas en las zonas designadas de nuestra terraza y áreas exteriores."},
-    {q:"¿Tienen servicio a domicilio?",a:"Sí, puedes hacer tu pedido directamente por WhatsApp para recibirlo en la comodidad de tu hogar."},
-    {q:"¿Venden postres?",a:"Sí, contamos con nuestra deliciosa Pizza de Nutella con fresas frescas y azúcar pulverizada."},
-    {q:"¿Qué incluye la Burguezza?",a:"Es una hamburguesa artesanal con carne angus y bondiola, acompañada con papas en cascos."}
-  ],
-  en:[
-    {q:"What size are the pizzas?",a:"All our pizzas have a 30 cm diameter and are divided into 6 perfect portions for sharing."},
-    {q:"Do you have vegetarian options?",a:"Yes, we offer the Vegetables Only pizza, traditional pastas and salads adaptable to your preference."},
-    {q:"How do I make a reservation?",a:"You can book directly from the Book a Table button in the app or by sending us a WhatsApp message."},
-    {q:"What payment methods do you accept?",a:"We accept cash, credit/debit cards and electronic bank transfers."},
-    {q:"Is the restaurant Pet Friendly?",a:"Yes, pets are welcome in designated areas of our terrace and outdoor spaces."},
-    {q:"Do you offer delivery?",a:"Yes, you can place your order directly via WhatsApp and receive it at the comfort of your home."},
-    {q:"Do you sell desserts?",a:"Yes, we have our delicious Nutella Pizza with fresh strawberries and powdered sugar."},
-    {q:"What does the Burguezza include?",a:"It is an artisan burger with Angus beef and bondiola, served with wedge fries."}
-  ]
-};
+const catNames = {CAT1:"Antipasti",CAT2:"Pizzas",CAT3:"Lasagnas y Pastas",CAT4:"Panini",CAT5:"Hamburguesas y Calzones"};
 
-// ─────────────────────────────────────────────
-// Estado global
-// ─────────────────────────────────────────────
-let activeLang = 'es';
+const faqs = [
+  {q:"¿De qué tamaño son las pizzas?",a:"Todas nuestras pizzas tienen un diámetro de 30 cm y se dividen en 6 porciones perfectas para compartir."},
+  {q:"¿Tienen opciones vegetarianas?",a:"Sí, contamos con la pizza Solo Vegetales, pastas tradicionales y ensaladas adaptables a tu preferencia."},
+  {q:"¿Cómo realizo una reserva?",a:"Puedes reservar directamente desde el botón Reservar Mesa o enviándonos un mensaje directo a WhatsApp."},
+  {q:"¿Cuáles son los métodos de pago?",a:"Aceptamos pagos en efectivo, tarjetas de crédito/débito y transferencias electrónicas bancarias."},
+  {q:"¿El restaurante es Pet Friendly?",a:"Sí, las mascotas son bienvenidas en las zonas designadas de nuestra terraza y áreas exteriores."},
+  {q:"¿Tienen servicio a domicilio?",a:"Sí, puedes hacer tu pedido directamente por WhatsApp para recibirlo en la comodidad de tu hogar."},
+  {q:"¿Venden postres?",a:"Sí, contamos con nuestra deliciosa Pizza de Nutella con fresas frescas y azúcar pulverizada."},
+  {q:"¿Qué incluye la Burguezza?",a:"Es una hamburguesa artesanal con carne angus y bondiola, acompañada con papas en cascos."}
+];
+
 let activeCat = 'CAT1';
 let activeCatEl = null;
 
-// ─────────────────────────────────────────────
-// Render de plato
-// ─────────────────────────────────────────────
 function renderDish(p) {
-  const t = i18n[activeLang];
-  const d = p[activeLang];
   return `<div class="dish">
-    <div class="dish-img"><i class="ti ti-photo" style="font-size:18px;" aria-hidden="true"></i></div>
+    <div class="dish-img">
+      <img src="${p.img}" alt="${p.name}" loading="lazy" width="68" height="68">
+    </div>
     <div class="dish-body">
-      <p class="dish-name">${d.name}</p>
-      <p class="dish-desc">${d.desc}</p>
+      <p class="dish-name">${p.name}</p>
+      <p class="dish-desc">${p.desc}</p>
       <div class="dish-foot">
         <span class="price">${p.price} K</span>
-        ${p.pop?`<span class="badge-pop">${t.badgePop}</span>`:p.hot?`<span class="badge-hot">${t.badgeHot}</span>`:''}
+        ${p.pop?'<span class="badge-pop">Popular</span>':p.hot?'<span class="badge-hot">Picante</span>':''}
       </div>
     </div>
   </div>`;
 }
 
-// ─────────────────────────────────────────────
-// Mostrar categoría
-// ─────────────────────────────────────────────
 function showCat(catId, el) {
   activeCat = catId;
   activeCatEl = el;
@@ -371,12 +292,9 @@ function showCat(catId, el) {
   if (q) return;
   const list = document.getElementById('menu-list');
   const items = products.filter(p => p.cat === catId);
-  list.innerHTML = '<div class="sec-title">' + i18n[activeLang].catNames[catId] + '</div>' + items.map(renderDish).join('');
+  list.innerHTML = '<div class="sec-title">' + catNames[catId] + '</div>' + items.map(renderDish).join('');
 }
 
-// ─────────────────────────────────────────────
-// Búsqueda
-// ─────────────────────────────────────────────
 const searchInput = document.getElementById('search-input');
 const searchClear = document.getElementById('search-clear');
 const menuList = document.getElementById('menu-list');
@@ -387,7 +305,6 @@ function normalize(str) {
 
 function doSearch(q) {
   q = q.trim();
-  const t = i18n[activeLang];
   if (!q) {
     searchClear.classList.remove('visible');
     showCat(activeCat, activeCatEl || document.querySelector('.cat.active'));
@@ -395,16 +312,14 @@ function doSearch(q) {
   }
   searchClear.classList.add('visible');
   const nq = normalize(q);
-  const results = products.filter(p => {
-    const d = p[activeLang];
-    return normalize(d.name).includes(nq) || normalize(d.desc).includes(nq);
-  });
+  const results = products.filter(p =>
+    normalize(p.name).includes(nq) || normalize(p.desc).includes(nq)
+  );
   if (results.length === 0) {
-    menuList.innerHTML = `<div class="search-empty"><i class="ti ti-search-off" aria-hidden="true"></i>${t.searchNoResults.replace('{q}', q)}</div>`;
+    menuList.innerHTML = `<div class="search-empty"><i class="ti ti-search-off"></i>Sin resultados para "<strong>${q}</strong>"</div>`;
   } else {
-    const s = results.length !== 1 ? 's' : '';
     menuList.innerHTML =
-      `<div class="search-results-label">${t.searchResultsLabel.replace('{n}', results.length).replace('{s}', s)}</div>` +
+      `<div class="search-results-label">${results.length} resultado${results.length !== 1 ? 's' : ''}</div>` +
       results.map(renderDish).join('');
   }
 }
@@ -416,67 +331,18 @@ searchClear.addEventListener('click', () => {
   doSearch('');
 });
 
-// ─────────────────────────────────────────────
-// FAQ
-// ─────────────────────────────────────────────
-function renderFaq(lang) {
-  document.getElementById('faq-list').innerHTML = faqs[lang].map((f, i) => `
-    <div class="faq-item" id="faq${i}" onclick="toggleFaq(${i})">
-      <div class="faq-q">${f.q} <i class="ti ti-chevron-down" style="font-size:13px;flex-shrink:0;" aria-hidden="true"></i></div>
-      <div class="faq-a">${f.a}</div>
-    </div>`).join('');
-}
+document.getElementById('faq-list').innerHTML = faqs.map((f, i) => `
+  <div class="faq-item" id="faq${i}" onclick="toggleFaq(${i})">
+    <div class="faq-q">${f.q} <i class="ti ti-chevron-down" style="font-size:13px;"></i></div>
+    <div class="faq-a">${f.a}</div>
+  </div>`).join('');
 
 function toggleFaq(i) {
   document.getElementById('faq' + i).classList.toggle('open');
 }
 
-// ─────────────────────────────────────────────
-// Cambio de idioma
-// ─────────────────────────────────────────────
-function setLang(lang) {
-  if (lang === activeLang) return;
-  activeLang = lang;
-  const t = i18n[lang];
-
-  // Botones selector
-  document.getElementById('btn-es').classList.toggle('active', lang === 'es');
-  document.getElementById('btn-en').classList.toggle('active', lang === 'en');
-  document.getElementById('btn-es').setAttribute('aria-pressed', String(lang === 'es'));
-  document.getElementById('btn-en').setAttribute('aria-pressed', String(lang === 'en'));
-
-  // Textos estáticos
-  document.getElementById('resto-sub').textContent = t.restoSub;
-  searchInput.placeholder = t.searchPlaceholder;
-  document.getElementById('info-hours').textContent = t.infoHours;
-  document.getElementById('info-address').textContent = t.infoAddress;
-  document.getElementById('btn-wa-text').textContent = t.btnWa;
-  document.getElementById('btn-res-text').textContent = t.btnRes;
-  document.getElementById('btn-map-text').textContent = t.btnMap;
-  document.getElementById('btn-faq-text').textContent = t.btnFaq;
-  document.getElementById('faq-title').textContent = t.faqTitle;
-
-  // Etiquetas de categorías
-  document.querySelectorAll('.cat').forEach(el => {
-    el.textContent = t.catLabels[el.getAttribute('data-cat')];
-  });
-
-  // Rerender lista activa o búsqueda en curso
-  const q = searchInput.value.trim();
-  if (q) {
-    doSearch(q);
-  } else {
-    showCat(activeCat, activeCatEl || document.querySelector('.cat.active'));
-  }
-
-  // Rerender FAQ
-  renderFaq(lang);
-}
-
-// ─────────────────────────────────────────────
-// Inicializar
-// ─────────────────────────────────────────────
 activeCatEl = document.querySelector('.cat.active');
-renderFaq('es');
 showCat('CAT1', activeCatEl);
 </script>
+</body>
+</html>
