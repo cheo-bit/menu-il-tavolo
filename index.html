@@ -43,8 +43,17 @@ body{font-family:sans-serif;background:#4a5240;}
 .cat.active{background:#c9a84c;color:#2e3328;border-color:#c9a84c;font-weight:600;}
 .sec-title{font-size:10px;font-weight:600;color:#c9a84c;letter-spacing:.1em;text-transform:uppercase;padding:12px 10px 6px;}
 .dish{display:flex;gap:10px;padding:10px;border-bottom:0.5px solid #3d4535;}
-.dish-img{width:68px;height:68px;border-radius:8px;background:#3d4535;border:0.5px solid #5a6350;flex-shrink:0;overflow:hidden;}
+.dish-img{width:68px;height:68px;border-radius:8px;background:#3d4535;border:0.5px solid #5a6350;flex-shrink:0;overflow:hidden;cursor:pointer;}
 .dish-img img{width:100%;height:100%;object-fit:cover;display:block;}
+
+/* Modal de zoom de imagen */
+.img-modal-overlay{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.85);display:none;align-items:center;justify-content:center;z-index:9999;padding:24px;}
+.img-modal-overlay.open{display:flex;}
+.img-modal-content{position:relative;max-width:340px;width:100%;}
+.img-modal-content img{width:100%;height:auto;border-radius:12px;border:2px solid #c9a84c;display:block;}
+.img-modal-caption{text-align:center;color:#e8dfc0;font-size:14px;font-weight:600;margin-top:10px;}
+.img-modal-close{position:absolute;top:-14px;right:-14px;width:32px;height:32px;border-radius:50%;background:#c9a84c;border:none;display:flex;align-items:center;justify-content:center;cursor:pointer;padding:0;}
+.img-modal-close svg{width:16px;height:16px;fill:#2e3328;}
 .dish-body{flex:1;min-width:0;}
 .dish-name{font-size:14px;font-weight:600;color:#c9a84c;margin-bottom:3px;}
 .dish-desc{font-size:11px;color:#9aaa8a;line-height:1.5;margin-bottom:6px;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;}
@@ -175,6 +184,17 @@ body{font-family:sans-serif;background:#4a5240;}
 
 
 </div>
+</div>
+
+<!-- Modal de zoom de imagen -->
+<div class="img-modal-overlay" id="img-modal" onclick="if(event.target===this)closeImgModal()">
+  <div class="img-modal-content">
+    <button class="img-modal-close" onclick="closeImgModal()" aria-label="Cerrar">
+      <svg viewBox="0 0 24 24"><path d="M18.3 5.71L12 12.01l-6.3-6.3-1.41 1.41 6.3 6.3-6.3 6.3 1.41 1.41 6.3-6.3 6.3 6.3 1.41-1.41-6.3-6.3 6.3-6.3z"/></svg>
+    </button>
+    <img id="img-modal-img" src="" alt="">
+    <p class="img-modal-caption" id="img-modal-caption"></p>
+  </div>
 </div>
 
 <script>
@@ -308,7 +328,7 @@ function renderDish(p){
   const count = likes[p.id] || 0;
   const isLiked = count > 0 && likes[p.id+'_liked'];
   return `<div class="dish">
-    <div class="dish-img"><img src="${p.img}" alt="${d.name}" loading="lazy" width="68" height="68"></div>
+    <div class="dish-img" onclick="openImgModal('${p.img}','${d.name.replace(/'/g,"\\'")}')"><img src="${p.img}" alt="${d.name}" loading="lazy" width="68" height="68"></div>
     <div class="dish-body">
       <p class="dish-name">${d.name}</p>
       <p class="dish-desc">${d.desc}</p>
@@ -432,6 +452,23 @@ function setLang(lang){
 
   renderFaq(lang);
 }
+
+// ─────────────────────────────────────────────
+// MODAL DE ZOOM DE IMAGEN
+// ─────────────────────────────────────────────
+function openImgModal(src, caption){
+  document.getElementById('img-modal-img').src = src;
+  document.getElementById('img-modal-caption').textContent = caption;
+  document.getElementById('img-modal').classList.add('open');
+}
+
+function closeImgModal(){
+  document.getElementById('img-modal').classList.remove('open');
+}
+
+document.addEventListener('keydown', (e) => {
+  if(e.key === 'Escape') closeImgModal();
+});
 
 // ─────────────────────────────────────────────
 // INICIALIZAR
