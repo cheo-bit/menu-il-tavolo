@@ -384,11 +384,11 @@ function toggleLike(id){
     likes[id]++;
     likes[id+'_liked'] = true;
   }
-  const btn = document.getElementById('like-'+id);
-  const countEl = document.getElementById('like-count-'+id);
-  if(btn && countEl){
-    countEl.textContent = likes[id];
-    btn.classList.toggle('liked', likes[id+'_liked']);
+  const q=document.getElementById('search-input').value.trim();
+  if(q){
+    doSearch(q);
+  }else{
+    showCat(activeCat, activeCatEl||document.querySelector('.cat.active'));
   }
 }
 
@@ -402,7 +402,8 @@ function showCat(catId,el){
   const q=document.getElementById('search-input').value.trim();
   if(q)return;
   const list=document.getElementById('menu-list');
-  list.innerHTML='<div class="sec-title">'+i18n[activeLang].catNames[catId]+'</div>'+products.filter(p=>p.cat===catId).map(renderDish).join('');
+  const sorted = products.filter(p=>p.cat===catId).sort((a,b)=>(likes[b.id]||0)-(likes[a.id]||0));
+  list.innerHTML='<div class="sec-title">'+i18n[activeLang].catNames[catId]+'</div>'+sorted.map(renderDish).join('');
 }
 
 // ─────────────────────────────────────────────
@@ -507,4 +508,3 @@ showCat('CAT1',activeCatEl);
 </script>
 </body>
 </html>
-
